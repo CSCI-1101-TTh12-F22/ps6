@@ -36,9 +36,9 @@ For this program, you will use brute force to try to decode an encoded messages.
 ### Functions
 * `setenglishdictionary()`: Populates `englishwords`. **You do not need to modify this function**.
 
-* `setalpha2num()`: This void function populates the `alpha2num` global variable. You will write this code. For each letter in `alphabet` you will make an entry in `alpha2num` that maps that letter to its corresponding index in `alphabet` (e.g., `A`:0, `B`:1). Use a `for` loop.
+* `setalpha2num()`: This void function populates the `alpha2num` global variable. You will write this code. For each letter in `alphabet` you will make an entry in `alpha2num` that maps that letter to its corresponding index in `alphabet` (e.g., `"A":0`, `"B":1`). Use a `for` loop.
 
-* `decode(shiftsize, text)`: This function decodes a text by shifting each character by some shift size. It takes two arguments: (1) `shiftsize` (i.e., the amount to shift the alphabet) and (2) `text` (i.e., the text you want to decode). It should loop through the input text, and for each character, it should figure out what the replacement character is using `shiftsize` and the global variables `alphabet` and `alpha2num`. The challenges here are: (1) how to make sure that you don't try to look up punctuation marks in `alpha2num` since punctuation is unaffected by the cipher *(hint: check to make sure each character is in `alphabet`)*; and (2) how to wrap over the end of the alphabet *(hint: experiment with the modulus operator)*. This function should return the shifted text as a string.
+* `decode(shiftsize, text)`: This function decodes a text by shifting each character by some shift size. It takes two arguments: (1) `shiftsize` (i.e., the amount to shift the alphabet) and (2) `text` (i.e., the text you want to decode). It should loop through the input text, and for each character, it should figure out what the replacement character is using `shiftsize` and the global variables `alphabet` and `alpha2num`. The challenges here are: (1) how to make sure that you don't try to look up punctuation marks in `alpha2num` since punctuation is unaffected by the cipher *(hint: check to make sure each character is in `alphabet`)*; and (2) how to wrap over the end of the alphabet *(huge hint: experiment with the modulus operator)*. This function should return the shifted text as a string.
 
 * `checkgoodness(text)`: This boolean function takes a text, splits it into words, then looks each word up in the global variable `englishwords`. It keeps track of how many of the words in the text are real words that appear in `englishwords`. If more than 1/3 of the words in the text appear in `englishwords`, then it should return `True`. Otherwise, it should return `False`.
 
@@ -61,7 +61,7 @@ In the last part, you used brute force to solve the Caesar cipher. In this part,
 
 * Write a function called `getfrequencies(text)` that first counts how many times each letter from `alphabet` appears in the text using a for loop. (*Reminder: do not import additional libraries!*). Then it runs another for loop to calculate the relative frequency of each letter in the text (i.e., the number of times it appears in the text divided by how many letters there are in total in the text). It returns a list of tuples where each tuple has as its first element the letter and as its second element the letter's relative frequency. The list of tuples should be sorted by the second element. If you call the list `freqlist`, you can sort it with this line of code: `freqlist.sort(reverse=True, key=lambda x:x[1])`.
 
-* Rewrite `solvethecipher(text)` as follows. Recall that the most frequent letter English texts is `E`. Therefore, one of the most frequent letters in the encoded text is likely to be `E`. Instead of trying every possible shift size as you did in Part 1, you will strategically choose the shift size that will map the most frequent character in the encoded text to `E`, and then submit that to `checkgoodness()`. If `checkgoodnes()` returns false, choose the shift size that will map the second most frequent character in the encoded text to `e`, and submit to `checkgoodness()`. Keep doing this until `checkgoodness()` returns `True`, then return the encoded text, the shift size, and the number of shifts you had to try before getting a solution.
+* Rewrite `solvethecipher(text)` as follows. Recall that the most frequent letter English texts is `E`. Therefore, one of the most frequent letters in the encoded text is likely to be `E`. Instead of trying every possible shift size as you did in Part 1, you will strategically choose the shift size that will map the most frequent character in the encoded text to `E`, and then submit that to `checkgoodness()`. If `checkgoodnes()` returns false, choose the shift size that will map the second most frequent character in the encoded text to `E`, and submit to `checkgoodness()`. Keep doing this until `checkgoodness()` returns `True`, then return the encoded text, the shift size, and the number of shifts you had to try before getting a solution.
 
 * Update the `main()` method so that you save out three variables when you call `solvethecipher(text)`, since `solvethecipher()` now returns three values. In addition, update `main()` to print out the decoded text, the shift size, and the number of shifts you had to try before getting a solution.
 
@@ -74,7 +74,6 @@ Here's what I expect to see as your output when you provide `encoded-message1.tx
 ## What to turn in
 If you haven't already, create a `ps6` folder. In your `p6` folder, put both your Python programs in the folder,  zip the folder, and upload the `ps6.zip` file you created to Canvas. 
 
-**Don't forget your comments!**
 
-### This problem set is due Friday, March 19, 2021, at 11:59pm EST
+### This problem set is due Monday, October 24, 2022, at 11:59pm EDT
 
